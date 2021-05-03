@@ -4,56 +4,161 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Work;
+
 class WorksController extends Controller
 {
     public function index()
     {
-        $data = [];
-        if (\Auth::check()) { // 認証済みの場合
-            // 認証済みユーザを取得
-            $user = \Auth::user();
-            // ユーザの投稿の一覧を作成日時の降順で取得
-            // （後のChapterで他ユーザの投稿も取得するように変更しますが、現時点ではこのユーザの投稿のみ取得します）
-            $works = $user->works()->orderBy('created_at', 'desc')->paginate(10);
+       //cacooの①   
+        // // 認証済みユーザをidの降順で取得       
+        //   $user = \Auth::user();       
+        // 作品一覧をidの降順で取得
+        $works = Work::paginate(20);
+        //$works = Work::all();
+        // 作品一覧ビューでそれを表示
+        return view('works.index', [
+            // 'user' => $user,            
+            'works' => $works,
+            
+        ]);
 
-            $data = [
-                'user' => $user,
-                'works' => $works,
-            ];
-        }
-
-        // Welcomeビューでそれらを表示
-        return view('welcome', $data);
     }
+    
+    
+    
+    public function create()
+    {
+       //cacooの⑥        
+        $work = new Work;
+        // 作品作成ビューを表示
+        return view('works.create', [
+            'work' => $work,
+        ]);
+        
+ 
+    }            
+        
+
 
     public function store(Request $request)
     {
+        
         // バリデーション
         $request->validate([
-            'content' => 'required|max:255',
+            'photo' => 'required|max:10',      //仮置き、あとで修正
+            'title' => 'required|max:100',
+            'description' => 'required|max:300',            
+            'work_public' => 'required|max:10',        //仮置き、後で修正       
         ]);
 
-        // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
         $request->user()->works()->create([
-            'content' => $request->content,
+        // 作品を作成
+        'photo' => $request->photo,
+        'title' => $request->title,        
+        'description' => $request->description,
+        'work_public' => $request->work_public, 
+        ]);
+        
+        // トップページへリダイレクトさせる
+          return redirect('/');
+
+
+
+        // // idの値で作品を検索して取得
+        // $work = Work::findOrFail($id);
+        // // 作品を更新
+        // $work->photo = $request->photo;          
+        // $work->title = $request->title;
+        // $work->description = $request->description;          
+        // $work->work_public = $request->work_public;        
+        // $work->save();
+
+        // // トップページへリダイレクトさせる
+        // return redirect('/');        
+        
+    }   
+
+
+    
+    public function show($id)
+    {
+
+       //cacooの⑧ 
+               
+        $data = [];        
+
+  
+        // idの値で作品を検索して取得
+        $work = Work::findOrFail($id);    
+    
+        $data = [
+            'work' => $work,
+        ];    
+        // 作品詳細ビューでそれを表示
+        return view('works.show', $data);        
+        
+        // トップページへリダイレクトさせる
+          return redirect('/');       
+        
+    }    
+    
+    public function edit($id)
+    {
+       //cacooの⑦
+        // idの値で作品を検索して取得
+        $work = Work::findOrFail($id);
+
+        // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、作品を編集
+        if (\Auth::id() === $work->user_id) {
+        // 作品編集ビューでそれを表示
+        return view('works.edit', [
+            'work' => $work,
+        ]); 
+
+    }
+        // トップページへリダイレクトさせる
+        return redirect('/');    
+    }
+    
+    
+    public function update(Request $request, $id)
+    {
+        // バリデーション
+        $request->validate([
+            'photo' => 'required|max:10',      //仮置き、あとで修正          
+            'title' => 'required|max:100',
+            'description' => 'required|max:300',            
+            'work_public' => 'required|max:10',      //仮置き、あとで修正
         ]);
 
-        // 前のURLへリダイレクトさせる
-        return back();
+        // idの値で作品を検索して取得
+        $work = Work::findOrFail($id);
+        // 作品を更新
+        $work->photo = $request->photo;          
+        $work->title = $request->title;
+        $work->description = $request->description;          
+        $work->work_public = $request->work_public;        
+        $work->save();
+
+        // トップページへリダイレクトさせる
+        return redirect('/');
     }    
+    
+    
     
     public function destroy($id)
     {
-        // idの値で投稿を検索して取得
+        // idの値で作品を検索して取得
         $work = \App\Work::findOrFail($id);
 
-        // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を削除
+        // 認証済みユーザ（閲覧者）がその作品の所有者である場合は、作品を削除
         if (\Auth::id() === $work->user_id) {
             $work->delete();
         }
 
-        // 前のURLへリダイレクトさせる
-        return back();
+        // トップページへリダイレクトさせる
+        return redirect('/');  
     }    
     
     

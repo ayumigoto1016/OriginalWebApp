@@ -9,7 +9,7 @@ class AddWorkPublicToWorksTable extends Migration
     public function up()
     {
         Schema::table('works', function (Blueprint $table) {
-            $table->string('work_public');
+            $table->boolean('work_public');
         });
     }
 

@@ -19,21 +19,13 @@ class Work extends Model
     }
     
     
-    // /**
-    //  * この作品に関係するモデルの件数をロードする。
-    //  */
-    // public function loadRelationshipCounts()
-    // {
-    //     $this->loadCount(['favorites']);
-    // }     
-    
     
     /**
-     * このユーザがお気に入りしている作品（ Userモデルとの関係を定義）
+     * この作品をお気に入りしているユーザー（ Userモデルとの関係を定義）
      */
     public function favorite_users()
     {
-        return $this->belongsToMany(User::class, 'work_favorite', 'user_id', 'work_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'work_favorite', 'work_id', 'user_id')->withTimestamps();
     }    
   
   

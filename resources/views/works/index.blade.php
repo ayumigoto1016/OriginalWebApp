@@ -18,6 +18,11 @@
   <li class="nav-item">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
   </li>
+        
+@if (!Auth::check())    <!--未ログインの場合レイアウト崩れないように-->
+</ul>
+@else
+@endif
 
 @if (Auth::check()) 
 
@@ -48,7 +53,7 @@
             </div>  
             </div>  
         
-        @endforeach.     <!-- Topページがログインユーザしか見れなくなっているのでここを別ページに書く必要あり -->
+        @endforeach     <!-- Topページがログインユーザしか見れなくなっているのでここを別ページに書く必要あり -->
 
         
     </div>          
@@ -63,14 +68,7 @@
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <div class="row">
             <!--テスト画像-->
-        <div class="card col-sm-3">
-        <img src="https://www.newsweekjapan.jp/stories/assets_c/2016/09/webw160914-polar-thumb-720xauto-98543.jpg" class="img-fluid rounded mx-auto d-block img-thumbnail" alt="Responsive image">
-        <div class="card-body">
-        <p class="card-text">
-            ssssss
-        </p>
-        </div>  
-        </div> 
+
         
             <!--作品全て表示-->
         @foreach ($works as $work)

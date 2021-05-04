@@ -31,15 +31,14 @@ class User extends Authenticatable
     
 
     /**
-     * この作品をお気に入りしているユーザ。（ Userモデルとの関係を定義）
+     * このユーザがお気に入りしている作品。（ Userモデルとの関係を定義）
      */
     public function favorites()
     {
         return $this->belongsToMany(Work::class, 'work_favorite', 'user_id', 'work_id')->withTimestamps();
     }       
     
-    
-    
+
     
     /**
      * このユーザに関係するモデルの件数をロードする。
@@ -109,8 +108,10 @@ class User extends Authenticatable
     {
         // お気に入りしている作品の中に $workIdのものが存在するか
         return $this->favorites()->where('work_id', $workId)->exists();
-    }    
+    }  
     
+    
+
     
     /**
      * このユーザがお気に入りした作品に絞り込む。

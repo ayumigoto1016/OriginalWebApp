@@ -18,10 +18,15 @@
         {!! Form::label('photo', '作品画像:') !!}      
         {!! Form::textarea('photo', null, ['class' => 'form-control', 'rows' => '2']) !!}
     </div> 
-    <div class="form-group">
-        {!! Form::label('work_public', '公開:') !!}            
-        {!! Form::textarea('work_public', null, ['class' => 'form-control', 'rows' => '2']) !!}
+ 
+                                <!--ここに公開トグルいれる-->
+              
+    <div class="custom-control custom-switch">
+      <input type="checkbox" name="work_public" class="custom-control-input" id="customSwitch1"  value="1" {{ (empty($work->work_public)) ? '' : 'checked'}}>
+      <label class="custom-control-label" for="customSwitch1">公開</label>
     </div>  
+
+   
     <div class="form-group">
         {!! Form::label('title', 'タイトル:') !!}         
         {!! Form::textarea('title', null, ['class' => 'form-control', 'rows' => '2']) !!}

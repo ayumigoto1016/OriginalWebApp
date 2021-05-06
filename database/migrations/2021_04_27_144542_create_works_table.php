@@ -16,7 +16,7 @@ class CreateWorksTable extends Migration
         Schema::create('works', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('content');
+            $table->string('content')->nullable();
             $table->timestamps();
 
             // 外部キー制約

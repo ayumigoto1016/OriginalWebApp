@@ -9,7 +9,7 @@ class AddPhotoToWorksTable extends Migration
     public function up()
     {
         Schema::table('works', function (Blueprint $table) {
-            $table->string('photo');
+            $table->string('photo')->nullable();            
         });
     }
 

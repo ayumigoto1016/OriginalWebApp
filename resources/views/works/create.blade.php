@@ -14,11 +14,12 @@
     
 
     
-{!! Form::model($work, ['route' => 'works.store']) !!}
-    <div class="form-group">
-        {!! Form::label('photo', '作品画像:') !!}      
-        {!! Form::textarea('photo', null, ['class' => 'form-control', 'rows' => '2']) !!}
-    </div> 
+{!! Form::model($work, ['route' => 'works.store', 'files' => true]) !!}
+
+    <!-- アップロードフォームの作成 -->
+    <input type="file" name="photo">
+    {{ csrf_field() }}
+
     
     <div class="custom-control custom-switch">
       <input type="checkbox" name="work_public" class="custom-control-input" id="customSwitch1"  value="1" >

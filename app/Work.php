@@ -30,17 +30,5 @@ class Work extends Model
   
   
     
-        /**
-     * このユーザが公開した作品に絞り込む。
-     */
-    public function feed_public()
-    {
-        // このユーザが公開した作品のidを取得して配列にする
-        $workIds = $this->favorites()->pluck('works.id')->toArray();    //後で公開仕様に修正する
-        // このユーザの作品のidもその配列に追加
-        $workIds[] = $this->id;
-        // それらのユーザが所有する投稿に絞り込む
-        return Work::whereIn('work_public', 1);
-    }     
 
 }

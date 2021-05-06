@@ -12,13 +12,16 @@
     </div>    
 
 
-{!! Form::model($work, ['route' => ['works.update', $work->id], 'method' => 'put']) !!}
+{!! Form::model($work, ['route' => ['works.update', $work->id], 'method' => 'put', 'files' => true]) !!}
+            <div><label>現在の作品画像：</label><img src="{{ $work->photo }}" class="img-fluid" alt="Responsive image"></div>
 
     <div class="form-group">
-        {!! Form::label('photo', '作品画像:') !!}      
-        {!! Form::textarea('photo', null, ['class' => 'form-control', 'rows' => '2']) !!}
-    </div> 
- 
+        {!! Form::label('photo', '新しい画像をアップロード:') !!}      
+        <!-- アップロードフォームの作成 -->    
+         <input type="file" name="photo">
+        {{ csrf_field() }}
+    </div>
+
                                 <!--ここに公開トグルいれる-->
               
     <div class="custom-control custom-switch">

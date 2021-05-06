@@ -43,12 +43,11 @@
 
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
-              
-            <div>{{ $favorite->photo }}</div>
+            <div class="card-body">              
+            <div><img src="{{ $favorite->photo }}" class="img-fluid" alt="Responsive image"></div>
             {{-- cacoo⑧登録済み作品詳細ページへのリンク --}}
-            <p>{!! link_to_route('works.show', '詳細', ['work' => $favorite->id]) !!}</p>            
+            <p>{!! link_to_route('works.show', '詳しく見る！', ['work' => $favorite->id]) !!}</p>            
             
-            <div class="card-body">
             <div class="card-text">{{ $favorite->title }} </div>
             </div>  
             </div>  
@@ -67,19 +66,19 @@
         
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <div class="row">
-            <!--テスト画像-->
 
         
             <!--作品全て表示-->
         @foreach ($works as $work)
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
-            <div>{{ $work->photo }}</div>
+            <div class="card-body">                
+            <div><img src="{{ $work->photo }}" class="img-fluid" alt="Responsive image"></div>
             {{-- cacoo⑦登録済み作品編集ページへのリンク --}}
 
-            <p>{!! link_to_route('works.show', '詳細', ['work' => $work->id]) !!}</p>            
+            <p>{!! link_to_route('works.show', '詳しく見る！', ['work' => $work->id]) !!}</p>            
             
-            <div class="card-body">
+
             <div class="card-text">{{ $work->title }} </div>
             </div>  
             </div>  

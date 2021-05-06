@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Work;
 
+use Illuminate\Support\Facades\Storage; //S3を使用するのに必要
+
 class WorksController extends Controller
 {
     public function index()
@@ -30,6 +32,8 @@ class WorksController extends Controller
     {
        //cacooの⑥        
         $work = new Work;
+        
+        
         // 作品作成ビューを表示
         return view('works.create', [
             'work' => $work,
@@ -42,19 +46,30 @@ class WorksController extends Controller
 
     public function store(Request $request)
     {
+        // dd(env('AWS_BUCKET'));
+        // dd(\Config::get('filesystems'));
+        
         
         // バリデーション
         $request->validate([
-            'photo' => 'required|max:10',      //仮置き、あとで修正
+            'photo' => 'required',      //仮置き、あとで修正
             'title' => 'required|max:100',
             'description' => 'required|max:300',            
             'work_public' => 'nullable',        //仮置き、後で修正       
         ]);
 
+        //s3アップロード開始
+        $image = $request->file('photo');
+        // dd($image);
+        $path = Storage::disk('s3')->putFile('test', $image, 'public');        
+        // パスをデータベースに格納
+        $image_path = Storage::disk('s3')->url($path);
+        
+
 
         $request->user()->works()->create([
         // 作品を作成
-        'photo' => $request->photo,
+        'photo' => $image_path,
         'title' => $request->title,        
         'description' => $request->description,
         'work_public' => $request->work_public, 
@@ -73,7 +88,6 @@ class WorksController extends Controller
        //cacooの⑧ 
                
         $data = [];        
-
   
         // idの値で作品を検索して取得
         $work = Work::findOrFail($id);    
@@ -112,16 +126,27 @@ class WorksController extends Controller
     {
         // バリデーション
         $request->validate([
-            'photo' => 'required|max:10',      //仮置き、あとで修正          
+            'photo' => 'nullable',             
             'title' => 'required|max:100',
             'description' => 'required|max:300',            
-            'work_public' => 'nullable',      //仮置き、あとで修正
+            'work_public' => 'nullable',
         ]);
-
+        
         // idの値で作品を検索して取得
         $work = Work::findOrFail($id);
+
+        //s3アップロード開始
+        $image = $request->file('photo');
+        
+    if ($request->file('photo')->isValid()) {        
+    
+        $path = Storage::disk('s3')->putFile('test', $image, 'public');        
+        // パスをデータベースに格納
+        $image_path = Storage::disk('s3')->url($path);        
+      
         // 作品を更新
-        $work->photo = $request->photo;          
+        $work->photo = $image_path;
+    }
         $work->title = $request->title;
         $work->description = $request->description;          
         $work->work_public = $request->work_public;        

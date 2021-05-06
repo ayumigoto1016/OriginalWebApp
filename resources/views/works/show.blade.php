@@ -12,7 +12,7 @@
             
             <div class="row card col-sm-12 justify-content-between">
             <div class="card-body">
-            <div>{{ $work->photo }}</div>  
+            <div><img src="{{ $work->photo }}" class="img-fluid" alt="Responsive image"></div>  
             
             <div class="card-text"><h2>タイトル：{{ $work->title }}</h2></div>  
             <div class="card-text"><h2>紹介文：{{ $work->description }}</h2></div>              

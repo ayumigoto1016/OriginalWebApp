@@ -138,7 +138,7 @@ class WorksController extends Controller
         //s3アップロード開始
         $image = $request->file('photo');
         
-    if ($request->file('photo')->isValid()) {        
+    if ($request->file('photo')) {        //->isValid()
     
         $path = Storage::disk('s3')->putFile('test', $image, 'public');        
         // パスをデータベースに格納

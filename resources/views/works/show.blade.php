@@ -10,7 +10,7 @@
    
             <div class="card col-sm-10">
             <div class="card-body">
-            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="rounded" alt="image"></div>  
+            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="rounded w-100 h-100" alt="image"></div>  
             
 
             <dl class="row mt-4">

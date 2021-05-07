@@ -5,6 +5,8 @@
         <title>Hennamono</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="icon" href="{{ URL::asset('/css/favicon.ico') }}" type="image/x-icon"/>
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/app.css')  }}">
     </head>
 
     <body>

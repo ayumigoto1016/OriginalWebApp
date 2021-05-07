@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="container">
-<div class="row justify-content-md-center">    
-    <h1 class="text-secondary">ヘンナモノ ポートフォリオ</h1> 
+<div class="row justify-content-center">    
+    <h1 class="text-center text-secondary">ヘンナモノ ポートフォリオ</h1> 
 </div>
-<div class="row justify-content-md-center">    
+<div class="row justify-content-center">    
     <h5 class="lead text-secondary mt-4">モノ作りが好きな素人さんのための、創作作品共有ポートフォリオです。あるとちょっと楽しい、ばかばかしい、くだらないハンドメイド作品を公開できます。『何かに役立つわけではないけどこんなもの作ってみたよ！』大歓迎です！！</h5>
     <h5 class="lead text-secondary">簡単なアカウント登録後に全ての機能を使用することができます。いいなあ、と思った作品はFavoriteボタンを押すことでお気に入り登録ができ、トップ画面からいつでも閲覧可能です。</h5>
 </div>
@@ -48,7 +48,7 @@
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
             <div class="card-body">              
-            <div><img src="{{ $favorite->photo }}" class="rounded" width="200" height="200" alt="image"></div>
+            <div class="row justify-content-center"><img src="{{ $favorite->photo }}" class="img-fluid rounded" width="200" height="200" alt="image"></div>
            
             <div class="card-text"><p class="text-center pt-3">{{ $favorite->title }}</p></div>
             {{-- cacoo⑧登録済み作品詳細ページへのリンク --}}
@@ -77,7 +77,7 @@
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
             <div class="card-body">                
-            <div><img src="{{ $work->photo }}" class="rounded" width="200" height="200" alt="image"></div>
+            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="img-fluid rounded" width="200" height="200" alt="image"></div>
 
             <div class="card-text"><p class="text-center pt-3">{{ $work->title }}</p></div>
             {{-- cacoo⑦登録済み作品編集ページへのリンク --}}            

@@ -5,14 +5,12 @@
 
 
 <div class="container">
-    <div class="row justify-content-md-center">    
-        <h1 class="text-secondary">{{ $work->user->name }}さんの作品</h1>
-    </div>    
-
-            
+    <div class="row justify-content-center">    
+        <h1 class="text-center text-secondary">{{ $work->user->name }}さんの作品</h1>
+   
             <div class="card col-sm-12 justify-content-between">
             <div class="card-body">
-            <div class="row justify-content-md-center"><img src="{{ $work->photo }}" class="img-fluid rounded" alt="Responsive image"></div>  
+            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="img-fluid rounded" alt="image"></div>  
             
 
             <dl class="row mt-4">
@@ -25,9 +23,10 @@
             
             
             </div>  
-            </div>   
-
+            </div>  
+    </div>             
 </div>
+
 
     <div class="row justify-content-center m-4">
         @if (Auth::user()->is_favorite($work->id))

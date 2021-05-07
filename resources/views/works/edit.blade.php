@@ -2,11 +2,13 @@
 
 @section('content')
 
-    <div class="row justify-content-md-center">    
-        <h1 class="text-secondary">Edit Your Works</h1>    
+    <div class="container">
+        <div class="row justify-content-center">    
+            <h1 class="text-secondary">Edit Your Works</h1> 
+        </div>
     </div>
 
-    <div class="row justify-content-end">
+    <div class="row justify-content-end mr-3">
         {{-- Go Backボタン --}}
         {!! link_to_route('users.index', 'Go Back', [],  ['class' => 'btn btn-secondary']) !!}    
     </div>    
@@ -14,7 +16,7 @@
 
 {!! Form::model($work, ['route' => ['works.update', $work->id], 'method' => 'put', 'files' => true]) !!}
     <div class="mb-4">
-        <label>現在の作品画像：</label><img src="{{ $work->photo }}" class="img-fluid" alt="image">
+        <label>現在の作品画像：</label><img src="{{ $work->photo }}" class="img-fluid rounded" alt="image">
     </div>
 
     <div class="form-group">
@@ -47,14 +49,14 @@
         {{-- Saveボタン --}}
     {!! Form::submit('登録', ['class' => 'btn btn-primary btn-lg']) !!}
 
-{!! Form::close() !!}
 
 
+<div class="mt-4 mb-4">
         {{-- Deleteボタン --}}
 {!! Form::model($work, ['route' => ['works.destroy', $work->id], 'method' => 'delete']) !!}
         {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
 {!! Form::close() !!} 
-
-
+</div>
+{!! Form::close() !!}
 
 @endsection

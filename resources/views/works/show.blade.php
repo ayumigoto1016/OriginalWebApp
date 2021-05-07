@@ -12,7 +12,7 @@
             
             <div class="card col-sm-12 justify-content-between">
             <div class="card-body">
-            <div><img src="{{ $work->photo }}" class="img-fluid rounded" alt="Responsive image"></div>  
+            <div class="row justify-content-md-center"><img src="{{ $work->photo }}" class="img-fluid rounded" alt="Responsive image"></div>  
             
 
             <dl class="row mt-4">

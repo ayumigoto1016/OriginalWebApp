@@ -21,7 +21,7 @@
             <div class="card-body">                
                 {{-- ユーザーの作品それぞれのお気に入り数表示--}}   
             <h5 class="text-secondary">Favorites: <span class="badge badge-secondary">{{$work->favorite_users()->count()}}</span></h5>                
-            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="img-fluid rounded" width="200" height="200" alt="image"></div>
+            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="rounded" width="200" height="200" alt="image"></div>
 
             <div class="card-text"><p class="text-center pt-3">{{ $work->title }}</p></div>             
             {{-- cacoo⑦登録済み作品編集ページへのリンク --}}

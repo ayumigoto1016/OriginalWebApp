@@ -8,17 +8,17 @@
     <div class="row justify-content-center">    
         <h1 class="text-center text-secondary">{{ $work->user->name }}さんの作品</h1>
    
-            <div class="card col-sm-12 justify-content-between">
+            <div class="card col-sm-10">
             <div class="card-body">
-            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="img-fluid rounded" alt="image"></div>  
+            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="rounded" alt="image"></div>  
             
 
             <dl class="row mt-4">
               <dt class="col-sm-2"><h5 class="text-secondary">タイトル：</h5></dt>
-              <dd class="col-sm-10"><p class="lead"><strong>{{ $work->title }}</strong></dd>
+              <dd class="col-sm-8"><p class="lead"><strong>{{ $work->title }}</strong></dd>
               
               <dt class="col-sm-2"><h5 class="text-secondary">説明：</h5></dt>
-              <dd class="col-sm-10"><p class="lead"><strong>{{ $work->description }}</strong></dd>              
+              <dd class="col-sm-8"><p class="lead"><strong>{{ $work->description }}</strong></dd>              
             </dl>
             
             

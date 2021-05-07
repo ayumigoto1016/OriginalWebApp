@@ -6,7 +6,7 @@
                         {{-- 作品画像 --}}
                         <img class="mr-4 rounded" src="https://www.tobezoo.com/peace/img/mn04.jpg" alt="">                        
                         {{-- 作品タイトル --}}
-                        <p class="mb-0">{!! nl2br(e($work->title)) !!}</p>
+                        <p class="mb-0 text-secondary">{!! nl2br(e($work->title)) !!}</p>
                     <div>
                         @if (Auth::id() == $work->user_id)
                             {{-- 作品削除ボタンのフォーム --}}

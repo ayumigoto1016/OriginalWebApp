@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row justify-content-md-center">    
-        <h1>Edit Your Works</h1>    
+        <h1 class="text-secondary">Edit Your Works</h1>    
     </div>
 
     <div class="row justify-content-end">
@@ -13,18 +13,23 @@
 
 
 {!! Form::model($work, ['route' => ['works.update', $work->id], 'method' => 'put', 'files' => true]) !!}
-            <div><label>現在の作品画像：</label><img src="{{ $work->photo }}" class="img-fluid" alt="Responsive image"></div>
+    <div class="mb-4">
+        <label>現在の作品画像：</label><img src="{{ $work->photo }}" class="img-fluid" alt="image">
+    </div>
 
     <div class="form-group">
-        {!! Form::label('photo', '新しい画像をアップロード:') !!}      
+    <div class="mb-4">         
+        {!! Form::label('photo', '新しい画像をアップロード:') !!}   
         <!-- アップロードフォームの作成 -->    
          <input type="file" name="photo">
         {{ csrf_field() }}
+    <p><small>注意：正方形のように縦と横の幅が等しい画像を選択してください</small></p>        
+    </div>
     </div>
 
                                 <!--ここに公開トグルいれる-->
               
-    <div class="custom-control custom-switch">
+    <div class="custom-control custom-switch mb-4">
       <input type="checkbox" name="work_public" class="custom-control-input" id="customSwitch1"  value="1" {{ (empty($work->work_public)) ? '' : 'checked'}}>
       <label class="custom-control-label" for="customSwitch1">公開</label>
     </div>  
@@ -35,7 +40,7 @@
         {!! Form::textarea('title', null, ['class' => 'form-control', 'rows' => '2']) !!}
     </div> 
     <div class="form-group">
-        {!! Form::label('description', '紹介文:') !!}           
+        {!! Form::label('description', '説明:') !!}           
         {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '5']) !!}
     </div>    
 

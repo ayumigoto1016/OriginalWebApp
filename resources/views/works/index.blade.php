@@ -4,15 +4,19 @@
 
 <div class="container">
 <div class="row justify-content-md-center">    
-    <h1>ヘンナモノ ポートフォリオ</h1>    
+    <h1 class="text-secondary">ヘンナモノ ポートフォリオ</h1> 
 </div>
+<div class="row justify-content-md-center">    
+    <h5 class="lead text-secondary mt-4">モノ作りが好きな素人さんのための、創作作品共有ポートフォリオです。あるとちょっと楽しい、ばかばかしい、くだらないハンドメイド作品を公開できます。『何かに役立つわけではないけどこんなもの作ってみたよ！』大歓迎です！！</h5>
+    <h5 class="lead text-secondary">簡単なアカウント登録後に全ての機能を使用することができます。いいなあ、と思った作品はFavoriteボタンを押すことでお気に入り登録ができ、トップ画面からいつでも閲覧可能です。</h5>
 </div>
-
-<div>
+<div class ="container d-flex justify-content-center" >
+    <div class="col-sm-6 m-4">
     {{-- 作品作成ページへのリンク --}}
     {!! link_to_route('works.create', 'Add New Works!', [], ['class' => 'btn btn-lg btn-success btn-block']) !!}    
+    </div>
 </div>
-
+</div>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
@@ -44,11 +48,11 @@
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
             <div class="card-body">              
-            <div><img src="{{ $favorite->photo }}" class="img-fluid" alt="Responsive image"></div>
+            <div><img src="{{ $favorite->photo }}" class="rounded" width="200" height="200" alt="image"></div>
+           
+            <div class="card-text"><p class="text-center pt-3">{{ $favorite->title }}</p></div>
             {{-- cacoo⑧登録済み作品詳細ページへのリンク --}}
-            <p>{!! link_to_route('works.show', '詳しく見る！', ['work' => $favorite->id]) !!}</p>            
-            
-            <div class="card-text">{{ $favorite->title }} </div>
+            <p class="text-center pt-3">{!! link_to_route('works.show', '詳しく見る', ['work' => $favorite->id]) !!}</p>             
             </div>  
             </div>  
         
@@ -73,13 +77,11 @@
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
             <div class="card-body">                
-            <div><img src="{{ $work->photo }}" class="img-fluid" alt="Responsive image"></div>
-            {{-- cacoo⑦登録済み作品編集ページへのリンク --}}
+            <div><img src="{{ $work->photo }}" class="rounded" width="200" height="200" alt="image"></div>
 
-            <p>{!! link_to_route('works.show', '詳しく見る！', ['work' => $work->id]) !!}</p>            
-            
-
-            <div class="card-text">{{ $work->title }} </div>
+            <div class="card-text"><p class="text-center pt-3">{{ $work->title }}</p></div>
+            {{-- cacoo⑦登録済み作品編集ページへのリンク --}}            
+            <p class="text-center pt-2">{!! link_to_route('works.show', '詳しく見る', ['work' => $work->id]) !!}</p>            
             </div>  
             </div>  
         

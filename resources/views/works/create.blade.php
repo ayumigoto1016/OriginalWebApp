@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-md-center">    
-        <h1>Add New Works</h1>    
+        <h1 class="text-secondary">Add New Works</h1>    
     </div>
     
     <div class="row justify-content-end">
@@ -15,13 +15,14 @@
 
     
 {!! Form::model($work, ['route' => 'works.store', 'files' => true]) !!}
-
+    <div class="mb-4">
     <!-- アップロードフォームの作成 -->
     <input type="file" name="photo">
     {{ csrf_field() }}
-
+    <p><small>注意：正方形のように縦と横の幅が等しい画像を選択してください</small></p>
+    </div>
     
-    <div class="custom-control custom-switch">
+    <div class="custom-control custom-switch mb-4">
       <input type="checkbox" name="work_public" class="custom-control-input" id="customSwitch1"  value="1" >
       <label class="custom-control-label" for="customSwitch1">公開</label>
     </div>
@@ -32,7 +33,7 @@
         {!! Form::textarea('title', null, ['class' => 'form-control', 'rows' => '2']) !!}
     </div> 
     <div class="form-group">
-        {!! Form::label('description', '紹介文:') !!}           
+        {!! Form::label('description', '説明:') !!}           
         {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '5']) !!}
     </div>    
 

@@ -48,7 +48,7 @@
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
             <div class="card-body">              
-            <div class="row justify-content-center"><img src="{{ $favorite->photo }}" class="rounded" width="200" height="200" alt="image"></div>
+            <div class="row justify-content-center"><img src="{{ $favorite->photo }}" class="rounded w-100 h-100" alt="image"></div>
            
             <div class="card-text"><p class="text-center pt-3">{{ $favorite->title }}</p></div>
             {{-- cacoo⑧登録済み作品詳細ページへのリンク --}}
@@ -77,7 +77,7 @@
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
             <div class="card-body">                
-            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="rounded" width="200" height="200" alt="image"></div>
+            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="rounded w-100 h-100" alt="image"></div>
 
             <div class="card-text"><p class="text-center pt-3">{{ $work->title }}</p></div>
             {{-- cacoo⑦登録済み作品編集ページへのリンク --}}            

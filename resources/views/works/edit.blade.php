@@ -48,7 +48,7 @@
 
         {{-- Saveボタン --}}
     {!! Form::submit('登録', ['class' => 'btn btn-primary btn-lg']) !!}
-
+{!! Form::close() !!}
 
 
 <div class="mt-4 mb-4">
@@ -57,6 +57,6 @@
         {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
 {!! Form::close() !!} 
 </div>
-{!! Form::close() !!}
+
 
 @endsection

@@ -51,12 +51,12 @@
 {!! Form::close() !!}
 
 
-<div class="mt-4 mb-4">
-        {{-- Deleteボタン --}}
-{!! Form::model($work, ['route' => ['works.destroy', $work->id], 'method' => 'delete']) !!}
-        {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
-{!! Form::close() !!} 
-</div>
+    <div class="mt-4 mb-4">
+            {{-- Deleteボタン --}}
+    {!! Form::model($work, ['route' => ['works.destroy', $work->id], 'method' => 'delete']) !!}
+            {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+    {!! Form::close() !!} 
+    </div>
 
 
 @endsection

@@ -28,7 +28,6 @@ Route::group(['middleware' => ['auth']], function () {
     });    
     
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-  
     
     Route::group(['prefix' => 'works/{id}'], function () {
         Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');

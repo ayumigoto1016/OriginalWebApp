@@ -152,8 +152,8 @@ class WorksController extends Controller
         $work->work_public = $request->work_public;        
         $work->save();
 
-        // トップページへリダイレクトさせる
-        return redirect('/');
+        // ユーザの作品一覧ページへリダイレクトさせる
+        return redirect(route('users.index'));
     }    
     
     
@@ -168,8 +168,8 @@ class WorksController extends Controller
             $work->delete();
         }
 
-        // トップページへリダイレクトさせる
-        return redirect('/');  
+        // ユーザの作品一覧ページへリダイレクトさせる
+        return redirect(route('users.index'));
     }    
     
     

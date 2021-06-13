@@ -42,21 +42,24 @@
     <div class="row">
 
             <!--ユーザーのお気に入り作品のみ表示-->
-
         @foreach (Auth::user()->favorites as $favorite)
-
+            @if(!empty($favorite->work_public))
+                <!--作品が公開されているとき-->
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
             <div class="card-body">              
-            <div class="row justify-content-center"><img src="{{ $favorite->photo }}" class="rounded w-100 h-100" alt="image"></div>
+            <div class="row justify-content-center"><img src="{{ $favorite->photo }}" class="rounded" width="200" height="200" alt="image"></div>
            
             <div class="card-text"><p class="text-center pt-3">{{ $favorite->title }}</p></div>
             {{-- cacoo⑧登録済み作品詳細ページへのリンク --}}
             <p class="text-center pt-3">{!! link_to_route('works.show', '詳しく見る', ['work' => $favorite->id]) !!}</p>             
             </div>  
-            </div>  
-        
-        @endforeach     <!-- Topページがログインユーザしか見れなくなっているのでここを別ページに書く必要あり -->
+            </div> 
+
+            @else
+                <!--作品が非公開のとき-->                        
+            @endif
+        @endforeach 
 
         
     </div>          
@@ -77,14 +80,14 @@
                 {{-- cacoo①トップページへのリンク --}}          
             <div class="card col-sm-3">
             <div class="card-body">                
-            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="rounded w-100 h-100" alt="image"></div>
+            <div class="row justify-content-center"><img src="{{ $work->photo }}" class="rounded" width="200" height="200" alt="image"></div>
 
             <div class="card-text"><p class="text-center pt-3">{{ $work->title }}</p></div>
             {{-- cacoo⑦登録済み作品編集ページへのリンク --}}            
             <p class="text-center pt-2">{!! link_to_route('works.show', '詳しく見る', ['work' => $work->id]) !!}</p>            
             </div>  
             </div>  
-        
+            
         @endforeach
 
         </div>    <!--rowのdiv  -->

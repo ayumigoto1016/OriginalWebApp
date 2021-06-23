@@ -4,12 +4,12 @@
 
 <div class="container">
     <div class="row justify-content-center">    
-        <h1 class="text-secondary">Add New Works</h1>    
+        <h1 class="text-secondary">新しく投稿する</h1>    
     </div>
     
     <div class="row justify-content-end">
         {{-- Go Backボタン --}}
-        {!! link_to_route('users.index', 'Go Back', [],  ['class' => 'btn btn-secondary']) !!}    
+        {!! link_to_route('users.index', '戻る', [],  ['class' => 'btn btn-secondary']) !!}    
     </div>  
     
 

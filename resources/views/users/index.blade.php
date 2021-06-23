@@ -9,7 +9,7 @@
 
     <div class="row justify-content-end mb-3 mr-3">
         {{-- Homeボタン --}}
-        {!! link_to_route('works.index', 'Home', [],  ['class' => 'btn btn-info']) !!}    
+        {!! link_to_route('works.index', 'TOP', [],  ['class' => 'btn btn-info']) !!}    
     </div>
 
 

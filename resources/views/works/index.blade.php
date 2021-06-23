@@ -13,7 +13,7 @@
 <div class ="container d-flex justify-content-center" >
     <div class="col-sm-6 m-4">
     {{-- 作品作成ページへのリンク --}}
-    {!! link_to_route('works.create', 'Add New Works!', [], ['class' => 'btn btn-lg btn-success btn-block']) !!}    
+    {!! link_to_route('works.create', '新しく投稿する', [], ['class' => 'btn btn-lg btn-success btn-block']) !!}    
     </div>
 </div>
 </div>
